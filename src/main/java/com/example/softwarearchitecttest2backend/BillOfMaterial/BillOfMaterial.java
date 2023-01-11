@@ -17,7 +17,7 @@ public class BillOfMaterial {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long bom_id;
 
 
     private String clientName;

@@ -18,7 +18,7 @@ public class ManufacturingOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long mo_id;
 
     @Column(name = "clientname")
     private String clientName;
