@@ -9,7 +9,7 @@ public class NullGuard {
 
 
     public static <T> void updateIfPresent(Consumer<T> consumer, T value) {
-        if (value != null){
+        if (value != null) {
             consumer.accept(value);
         }
     }

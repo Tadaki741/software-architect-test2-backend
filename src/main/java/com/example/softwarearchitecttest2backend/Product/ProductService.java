@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
-import java.util.Optional;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Service
@@ -52,27 +50,27 @@ public class ProductService {
         Product existedProduct = this.productRepository.findById(Long.parseLong(id)).orElse(null);
         logger.info("DTO: " + productDTO);
         logger.info("database object: " + existedProduct);
-        if (existedProduct == null){
+        if (existedProduct == null) {
             return false;
         }
 
         //Fill null
-        NullGuard.updateIfChanged(existedProduct::setCode,productDTO.getCode(),existedProduct::getCode);
-        NullGuard.updateIfChanged(existedProduct::setName,productDTO.getName(),existedProduct::getName);
-        NullGuard.updateIfChanged(existedProduct::setDescription,productDTO.getDescription(),existedProduct::getDescription);
-        NullGuard.updateIfChanged(existedProduct::setCategory,productDTO.getCategory(),existedProduct::getCategory);
-        NullGuard.updateIfChanged(existedProduct::setQuantity,productDTO.getQuantity(),existedProduct::getQuantity);
-        NullGuard.updateIfChanged(existedProduct::setParent,productDTO.getParent(),existedProduct::getParent);
+        NullGuard.updateIfChanged(existedProduct::setCode, productDTO.getCode(), existedProduct::getCode);
+        NullGuard.updateIfChanged(existedProduct::setName, productDTO.getName(), existedProduct::getName);
+        NullGuard.updateIfChanged(existedProduct::setDescription, productDTO.getDescription(), existedProduct::getDescription);
+        NullGuard.updateIfChanged(existedProduct::setCategory, productDTO.getCategory(), existedProduct::getCategory);
+        NullGuard.updateIfChanged(existedProduct::setQuantity, productDTO.getQuantity(), existedProduct::getQuantity);
+        NullGuard.updateIfChanged(existedProduct::setParent, productDTO.getParent(), existedProduct::getParent);
 
-        this.productRepository.updateProduct(Long.parseLong(id),existedProduct.getCode(),existedProduct.getName(),existedProduct.getDescription(),existedProduct.getCategory(),existedProduct.getQuantity(),existedProduct.getParent());
+        this.productRepository.updateProduct(Long.parseLong(id), existedProduct.getCode(), existedProduct.getName(), existedProduct.getDescription(), existedProduct.getCategory(), existedProduct.getQuantity(), existedProduct.getParent());
         return true;
     }
 
 
-    public boolean deleteProduct (String name) {
+    public boolean deleteProduct(String name) {
         //Check if it exists first
         Product databaseProduct = this.productRepository.findByName(name);
-        if (databaseProduct == null){
+        if (databaseProduct == null) {
             return false;
         }
         Long targetID = databaseProduct.getId();
