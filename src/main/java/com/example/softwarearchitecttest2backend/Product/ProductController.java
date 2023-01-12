@@ -36,6 +36,15 @@ public class ProductController {
     }
 
 
+    @GetMapping(path = "/all/page")
+    public ResponseEntity<ResponseBody> getAllProductsWithPage(@RequestParam(name = "pageSize") String size, @RequestParam(name = "NumberOfPage") String numberOfPage) {
+        //Get the list of products
+        List<Product> allProducts = this.productService.retrieveAllProductsWithPage(Integer.parseInt(numberOfPage),Integer.parseInt(size));
+        ResponseBody responseBody = new ResponseBody(allProducts, HttpStatus.OK.name());
+        return new ResponseEntity<>(responseBody, HttpStatus.OK);
+    }
+
+
     @PatchMapping(path = "/{id}/update")
     public ResponseEntity<ResponseBody> updateProduct(@RequestBody Product product, @PathVariable(name = "id") String id) {
         boolean status = this.productService.updateProduct(product, id);
@@ -43,10 +52,10 @@ public class ProductController {
         return new ResponseEntity<>(responseBody, HttpStatus.OK);
     }
 
-    @DeleteMapping(path = "/{name}")
-    public ResponseEntity<ResponseBody> deleteProduct(@PathVariable(name = "name") String name) {
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<ResponseBody> deleteProduct(@PathVariable(name = "id") String id) {
         //Check if the product is existed
-        boolean status = this.productService.deleteProduct(name);
+        boolean status = this.productService.deleteProduct(id);
         ResponseBody responseBody = new ResponseBody(status, HttpStatus.OK.name());
         return new ResponseEntity<>(responseBody, HttpStatus.OK);
     }

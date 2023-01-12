@@ -2,12 +2,17 @@ package com.example.softwarearchitecttest2backend.Product;
 
 import com.example.softwarearchitecttest2backend.Utils.NullGuard;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
@@ -44,12 +49,27 @@ public class ProductService {
         return (List<Product>) this.productRepository.findAll();
     }
 
+
+    public List<Product> retrieveAllProductsWithPage(int NumberOfPage,int pageSize) {
+        logger.info("number of page: " + NumberOfPage + " page size: " + pageSize);
+        Pageable pageable = PageRequest.of(NumberOfPage,pageSize);
+        Page<Product> pagedResult = this.productRepository.findAll(pageable);
+        logger.info("result: " + pagedResult.getContent());
+        if (pagedResult.hasContent()) {
+            return pagedResult.getContent();
+        }
+        else {
+            return new ArrayList<>();
+        }
+    }
+
+
+
     public boolean updateProduct(Product productDTO, String id) {
 
         //Find the product first
         Product existedProduct = this.productRepository.findById(Long.parseLong(id)).orElse(null);
-        logger.info("DTO: " + productDTO);
-        logger.info("database object: " + existedProduct);
+
         if (existedProduct == null) {
             return false;
         }
@@ -67,13 +87,13 @@ public class ProductService {
     }
 
 
-    public boolean deleteProduct(String name) {
+    public boolean deleteProduct(String id) {
         //Check if it exists first
-        Product databaseProduct = this.productRepository.findByName(name);
-        if (databaseProduct == null) {
+        Optional<Product> databaseProduct = this.productRepository.findById(Long.parseLong(id));
+        if (databaseProduct.isEmpty()) {
             return false;
         }
-        Long targetID = databaseProduct.getId();
+        Long targetID = databaseProduct.get().getId();
         //Then delete it
         this.productRepository.deleteById(targetID);
         return true;
