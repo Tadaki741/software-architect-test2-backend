@@ -33,15 +33,20 @@ public class ManufacturingOrder {
     private Date startDate;
 
 
+    @Column(name = "status")
+    private String status;
+
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
     private Product product;
 
-    public ManufacturingOrder(String clientName, Date deliveryDate, Date completeDate, Date startDate, Product product) {
+    public ManufacturingOrder(String clientName, Date deliveryDate, Date completeDate, Date startDate, String status, Product product) {
         this.clientName = clientName;
         this.deliveryDate = deliveryDate;
         this.completeDate = completeDate;
         this.startDate = startDate;
+        this.status = status;
         this.product = product;
     }
 }

@@ -36,7 +36,7 @@ public class MOService {
         NullGuard.updateIfChanged(existedMO::setCompleteDate, manufacturingOrderDTO.getCompleteDate(), existedMO::getCompleteDate);
 
 
-        this.repository.updateMO(Long.parseLong(id), existedMO.getClientName(), existedMO.getDeliveryDate(), existedMO.getCompleteDate(), existedMO.getStartDate());
+        this.repository.updateMO(Long.parseLong(id), existedMO.getClientName(), existedMO.getDeliveryDate(), existedMO.getCompleteDate(), existedMO.getStartDate(), existedMO.getStatus());
         return true;
     }
 

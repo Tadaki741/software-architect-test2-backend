@@ -16,8 +16,8 @@ public interface MORepository extends PagingAndSortingRepository<ManufacturingOr
 
     @Transactional
     @Modifying
-    @Query(value = "update ManufacturingOrder mo set mo.clientName =:clientName, mo.completeDate = :completeDate, mo.deliveryDate = :deliveryDate, mo.startDate = :startDate where mo.id =:id")
-    void updateMO(@Param(value = "id") long id, @Param(value = "clientName") String clientName, @Param(value = "deliveryDate")Date deliveryDate, @Param(value = "completeDate") Date completeDate, @Param(value = "startDate") Date startDate);
+    @Query(value = "update ManufacturingOrder mo set mo.clientName =:clientName, mo.completeDate = :completeDate, mo.deliveryDate = :deliveryDate, mo.startDate = :startDate, mo.status = :status where mo.id =:id")
+    void updateMO(@Param(value = "id") long id, @Param(value = "clientName") String clientName, @Param(value = "deliveryDate")Date deliveryDate, @Param(value = "completeDate") Date completeDate, @Param(value = "startDate") Date startDate, @Param(value = "status") String status);
 
 
 }

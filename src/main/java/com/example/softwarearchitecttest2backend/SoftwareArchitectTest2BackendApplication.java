@@ -61,11 +61,11 @@ public class SoftwareArchitectTest2BackendApplication {
 			String sDate1="31/12/2023";
 			Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
 
-			ManufacturingOrder manufacturingOrder = new ManufacturingOrder("VoDaiDuong",date1,date1,date1, product1);
-			ManufacturingOrder manufacturingOrder3 = new ManufacturingOrder("MaiDucMinh",date1,date1,date1, product5);
-			ManufacturingOrder manufacturingOrder4 = new ManufacturingOrder("NguyenQuocBinh",date1,date1,date1, product6);
-			ManufacturingOrder manufacturingOrder1 = new ManufacturingOrder("NguyenQuocHoangTrung",date1,date1,date1, product2);
-			ManufacturingOrder manufacturingOrder2 = new ManufacturingOrder("TranDangKhoa",date1,date1,date1, product4);
+			ManufacturingOrder manufacturingOrder = new ManufacturingOrder("VoDaiDuong",date1,date1,date1,"undone", product1);
+			ManufacturingOrder manufacturingOrder3 = new ManufacturingOrder("MaiDucMinh",date1,date1,date1,"undone", product5);
+			ManufacturingOrder manufacturingOrder4 = new ManufacturingOrder("NguyenQuocBinh",date1,date1,date1,"undone", product6);
+			ManufacturingOrder manufacturingOrder1 = new ManufacturingOrder("NguyenQuocHoangTrung",date1,date1,date1,"undone", product2);
+			ManufacturingOrder manufacturingOrder2 = new ManufacturingOrder("TranDangKhoa",date1,date1,date1,"undone", product4);
 			this.moRepository.save(manufacturingOrder);
 			this.moRepository.save(manufacturingOrder2);
 			this.moRepository.save(manufacturingOrder3);
