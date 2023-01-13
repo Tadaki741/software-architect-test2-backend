@@ -50,7 +50,7 @@ public class MPOController {
 
 
     //Delete
-    @DeleteMapping
+    @DeleteMapping(path = "/{id}")
     public ResponseEntity<ResponseBody> deleteMPO(@PathVariable(name = "id") String id) {
         ResponseBody responseBody = new ResponseBody(this.service.deleteMPO(id), HttpStatus.OK.name());
         return new ResponseEntity<>(responseBody, HttpStatus.OK);
