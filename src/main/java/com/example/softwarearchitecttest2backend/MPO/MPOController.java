@@ -42,11 +42,9 @@ public class MPOController {
 
 
     //Update
-    @PutMapping("/{id}/update")
+    @PatchMapping("/{id}/update")
     public ResponseEntity<ResponseBody> updateMPO (@PathVariable(name = "id") String id, @RequestBody MPO mpo){
-
-
-        ResponseBody responseBody = new ResponseBody();
+        ResponseBody responseBody = new ResponseBody(this.service.updateMPO(mpo,id),HttpStatus.OK.name());
         return new ResponseEntity<>(responseBody,HttpStatus.OK);
     }
 

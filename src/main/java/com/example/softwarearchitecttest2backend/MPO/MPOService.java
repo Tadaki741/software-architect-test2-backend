@@ -1,5 +1,6 @@
 package com.example.softwarearchitecttest2backend.MPO;
 
+import com.example.softwarearchitecttest2backend.Utils.NullGuard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,20 @@ public class MPOService {
     //Update
     public boolean updateMPO(MPO mpoDTO, String id) {
 
-        return true;
+        //Find existed
+        MPO mpo = this.repository.findById(Long.parseLong(id)).orElse(null);
+
+        //Check null
+        if (mpo == null){
+            return false;
+        }
+
+        else {
+            NullGuard.updateIfChanged(mpo::setStatus,mpoDTO.getStatus(),mpo::getStatus);
+            //update
+            this.repository.updateMPO(mpo.getId(), mpo.getStatus());
+            return true;
+        }
     }
 
     //Get all

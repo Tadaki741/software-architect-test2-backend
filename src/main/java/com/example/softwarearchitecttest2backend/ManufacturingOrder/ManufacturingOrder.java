@@ -1,9 +1,11 @@
 package com.example.softwarearchitecttest2backend.ManufacturingOrder;
 
+import com.example.softwarearchitecttest2backend.Product.Product;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "mo")

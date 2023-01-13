@@ -1,6 +1,5 @@
 package com.example.softwarearchitecttest2backend.BillOfMaterial;
 
-import com.example.softwarearchitecttest2backend.Product.Product;
 import com.example.softwarearchitecttest2backend.response.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,8 +40,8 @@ public class BOMController {
     }
     //UPDATE
     @PatchMapping(path = "/{id}/update")
-    public ResponseEntity<ResponseBody> updateProduct(@RequestBody BillOfMaterial billOfMaterial, @PathVariable(name = "id") String id) {
-        boolean status = this.bomService.updateProduct(billOfMaterial, id);
+    public ResponseEntity<ResponseBody> updateBOM (@RequestBody BillOfMaterial billOfMaterial, @PathVariable(name = "id") String id) {
+        boolean status = this.bomService.updateBOM(billOfMaterial, id);
         ResponseBody responseBody = new ResponseBody(status, HttpStatus.OK.name());
         return new ResponseEntity<>(responseBody, HttpStatus.OK);
     }
@@ -51,7 +50,7 @@ public class BOMController {
 
     //DELETE
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<ResponseBody> deleteProduct(@PathVariable(name = "id") String id) {
+    public ResponseEntity<ResponseBody> deleteBOM(@PathVariable(name = "id") String id) {
         //Check if the product is existed
         boolean status = this.bomService.deleteBOM(id);
         ResponseBody responseBody = new ResponseBody(status, HttpStatus.OK.name());

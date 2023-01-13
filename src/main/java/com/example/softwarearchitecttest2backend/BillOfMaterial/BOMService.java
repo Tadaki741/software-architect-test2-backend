@@ -24,7 +24,7 @@ public class BOMService {
         return this.bomRepository.save(billOfMaterial);
     }
 
-    public boolean updateProduct(BillOfMaterial billOfMaterialDTO, String id) {
+    public boolean updateBOM(BillOfMaterial billOfMaterialDTO, String id) {
 
         //Find the product first
         BillOfMaterial existedBillOfMaterial = this.bomRepository.findById(Long.parseLong(id)).orElse(null);
