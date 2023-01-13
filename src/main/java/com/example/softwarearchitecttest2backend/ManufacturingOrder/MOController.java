@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "mo")
+@CrossOrigin("*")
 public class MOController {
 
     @Autowired
@@ -25,9 +26,9 @@ public class MOController {
         return new ResponseEntity<>(responseBody,HttpStatus.OK);
     }
 
-    @PostMapping(path = "/add")
-    public ResponseEntity<ResponseBody> addMO (@RequestBody ManufacturingOrder manufacturingOrder) {
-        ResponseBody responseBody = new ResponseBody(this.moService.addMO(manufacturingOrder), HttpStatus.CREATED.name());
+    @PostMapping(path = "/add/{selectedProductID}")
+    public ResponseEntity<ResponseBody> addMO (@RequestBody ManufacturingOrder manufacturingOrder, @PathVariable(name = "selectedProductID") String id) {
+        ResponseBody responseBody = new ResponseBody(this.moService.addMO(manufacturingOrder, id), HttpStatus.CREATED.name());
         return new ResponseEntity<>(responseBody,HttpStatus.CREATED);
     }
 

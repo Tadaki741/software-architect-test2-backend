@@ -1,9 +1,11 @@
 package com.example.softwarearchitecttest2backend.ManufacturingOrder;
 
 import com.example.softwarearchitecttest2backend.Product.Product;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -49,4 +51,6 @@ public class ManufacturingOrder {
         this.status = status;
         this.product = product;
     }
+
+
 }

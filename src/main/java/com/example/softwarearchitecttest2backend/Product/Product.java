@@ -2,10 +2,13 @@ package com.example.softwarearchitecttest2backend.Product;
 
 
 import com.example.softwarearchitecttest2backend.ManufacturingOrder.ManufacturingOrder;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer"})//We add this annotation to allow backend return the product object when it is stored inside Manufacturing Order
 @Entity
 @Table(name = "product")
 @Setter
@@ -13,7 +16,7 @@ import javax.persistence.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
