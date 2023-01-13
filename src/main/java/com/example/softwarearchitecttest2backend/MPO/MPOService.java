@@ -1,5 +1,7 @@
 package com.example.softwarearchitecttest2backend.MPO;
 
+import com.example.softwarearchitecttest2backend.Product.Product;
+import com.example.softwarearchitecttest2backend.Product.ProductRepository;
 import com.example.softwarearchitecttest2backend.Utils.NullGuard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,9 +14,24 @@ public class MPOService {
     @Autowired
     private MPORepository repository;
 
+    @Autowired
+    private ProductRepository productRepository;
 
     //Create
-    public MPO createMPO (MPO mpo) {
+    public MPO createMPO (MPO mpo, String id) {
+
+        //We need to find the associated product with it
+        //We will need to query to find that product
+        Product product = this.productRepository.findById(Long.parseLong(id)).orElse(null);
+        if (product == null) {
+            return null;
+        }
+
+        else {
+            mpo.setProduct(product);
+        }
+
+
         return this.repository.save(mpo);
     }
 
@@ -51,8 +68,23 @@ public class MPOService {
             return false;
         }
         else {
+            Long correspondingProductID = mpo.getProduct().getId();
+
+            //Delete the mpo
             this.repository.deleteById(mpo.getId());
-            return true;
+
+            //Search for that product and increase the value of it
+            Product productToUpdate = this.productRepository.findById(correspondingProductID).orElse(null);
+
+            if (productToUpdate == null){
+                return false;
+            }
+
+            else {
+                //Found product, update its quantity plus 1
+                this.productRepository.updateProduct(productToUpdate.getId(),productToUpdate.getCode(),productToUpdate.getName(),productToUpdate.getDescription(),productToUpdate.getCategory(),productToUpdate.getQuantity() + 1,productToUpdate.getPrice());
+                return true;
+            }
         }
     }
 

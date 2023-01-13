@@ -39,7 +39,7 @@ public class MOService {
     public List<ManufacturingOrder> getAllMO () {
         //Find each MO, then set its product
         List<ManufacturingOrder> manufacturingOrders = (List<ManufacturingOrder>) this.repository.findAll();
-        
+
 
         //Then return
         return (List<ManufacturingOrder>) this.repository.findAll();

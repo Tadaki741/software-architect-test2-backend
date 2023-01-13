@@ -23,9 +23,9 @@ public class MPOController {
     private MPOService service;
 
     //Create new MPO
-    @PostMapping(path = "/add")
-    public ResponseEntity<ResponseBody> addMPO(@RequestBody MPO mpo) {
-        ResponseBody responseBody = new ResponseBody(this.service.createMPO(mpo),HttpStatus.CREATED.name());
+    @PostMapping(path = "/add/{selectedProductID}")
+    public ResponseEntity<ResponseBody> addMPO(@RequestBody MPO mpo, @PathVariable(name = "selectedProductID") String id) {
+        ResponseBody responseBody = new ResponseBody(this.service.createMPO(mpo,id),HttpStatus.CREATED.name());
         return new ResponseEntity<>(responseBody, HttpStatus.CREATED);
 
     }
