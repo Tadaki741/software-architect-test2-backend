@@ -1,5 +1,7 @@
 package com.example.softwarearchitecttest2backend;
 
+import com.example.softwarearchitecttest2backend.MPO.MPO;
+import com.example.softwarearchitecttest2backend.MPO.MPORepository;
 import com.example.softwarearchitecttest2backend.ManufacturingOrder.MORepository;
 import com.example.softwarearchitecttest2backend.ManufacturingOrder.ManufacturingOrder;
 import com.example.softwarearchitecttest2backend.Product.Product;
@@ -23,6 +25,10 @@ public class SoftwareArchitectTest2BackendApplication {
 
 	@Autowired
 	private MORepository moRepository;
+
+
+	@Autowired
+	private MPORepository mpoRepository;
 
 
 	public static void main(String[] args) {
@@ -58,6 +64,7 @@ public class SoftwareArchitectTest2BackendApplication {
 			this.productRepository.save(product9);
 			this.productRepository.save(product10);
 
+			//Add some fake data to the manufacturing order table
 			String sDate1="31/12/2023";
 			Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
 
@@ -71,6 +78,22 @@ public class SoftwareArchitectTest2BackendApplication {
 			this.moRepository.save(manufacturingOrder3);
 			this.moRepository.save(manufacturingOrder4);
 			this.moRepository.save(manufacturingOrder1);
+
+
+			//Table add some fake data to the Material Purchase Order
+			MPO mpo = new MPO("undone",product2);
+			MPO mpo2 = new MPO("undone",product2);
+			MPO mpo3 = new MPO("undone",product5);
+			MPO mpo4 = new MPO("undone",product6);
+			MPO mpo1 = new MPO("undone",product1);
+
+
+			//Save
+			this.mpoRepository.save(mpo);
+			this.mpoRepository.save(mpo3);
+			this.mpoRepository.save(mpo4);
+			this.mpoRepository.save(mpo1);
+			this.mpoRepository.save(mpo2);
 
 		};
 	}
