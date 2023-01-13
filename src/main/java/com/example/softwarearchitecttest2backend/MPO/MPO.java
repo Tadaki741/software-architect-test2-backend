@@ -1,10 +1,17 @@
 package com.example.softwarearchitecttest2backend.MPO;
 
 
+import lombok.*;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "mpo")
+@Setter
+@Getter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class MPO {
 
     @Id
