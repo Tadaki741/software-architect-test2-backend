@@ -77,8 +77,31 @@ public class MOService {
 
         else {
             //Delete
+            //Get its product first
+            Long correspondingProductID = manufacturingOrder.getProduct().getId();
+
+            //Delete the Manufacturing Order parent object
             this.repository.deleteById(manufacturingOrder.getId());
-            return true;
+
+            //Search for that product, if its quantity is >= 1, we allow the minus operations
+            Product productToUpdate = this.productRepository.findById(correspondingProductID).orElse(null);
+
+            if (productToUpdate == null){
+                return false;
+            }
+
+            else {
+                //Update that product with the quantity - 1
+                //Check if >= 1
+                if (productToUpdate.getQuantity() >= 1){
+                    this.productRepository.updateProduct(productToUpdate.getId(),productToUpdate.getCode(),productToUpdate.getName(),productToUpdate.getDescription(),productToUpdate.getCategory(),productToUpdate.getQuantity() - 1,productToUpdate.getPrice());
+                    return true;
+                }
+                return false;
+            }
+
+
+
         }
 
     }
