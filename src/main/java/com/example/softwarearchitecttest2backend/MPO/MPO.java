@@ -4,7 +4,7 @@ package com.example.softwarearchitecttest2backend.MPO;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "material_purchase_order")
+@Table(name = "mpo")
 public class MPO {
 
     @Id

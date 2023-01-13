@@ -51,7 +51,7 @@ public class POService {
         if (existedProductOrder.isEmpty()){
             return false;
         }else {
-            this.poRepository.deleteById(existedProductOrder.get().getPo_id());
+            this.poRepository.deleteById(existedProductOrder.get().getId());
             return true;
         }
 

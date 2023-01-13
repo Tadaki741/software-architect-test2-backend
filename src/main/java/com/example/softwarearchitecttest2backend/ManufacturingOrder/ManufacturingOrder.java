@@ -1,14 +1,12 @@
 package com.example.softwarearchitecttest2backend.ManufacturingOrder;
 
-import com.example.softwarearchitecttest2backend.Product.Product;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
-@Table(name = "ManufacturingOrder")
+@Table(name = "mo")
 @Setter
 @Getter
 @ToString
@@ -18,7 +16,7 @@ public class ManufacturingOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long mo_id;
+    private long id;
 
     @Column(name = "clientname")
     private String clientName;
@@ -32,7 +30,5 @@ public class ManufacturingOrder {
     @Column(name = "startdate")
     private Date startDate;
 
-    @ManyToMany
-    private List<Product> listOfProductToSell;
 
 }

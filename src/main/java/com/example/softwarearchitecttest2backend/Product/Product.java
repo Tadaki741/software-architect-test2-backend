@@ -1,6 +1,7 @@
 package com.example.softwarearchitecttest2backend.Product;
 
 
+import com.example.softwarearchitecttest2backend.ProductOrder.ProductOrder;
 import lombok.*;
 
 import javax.persistence.*;

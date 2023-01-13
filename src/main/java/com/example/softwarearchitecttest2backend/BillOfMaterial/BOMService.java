@@ -1,7 +1,5 @@
 package com.example.softwarearchitecttest2backend.BillOfMaterial;
 
-import com.example.softwarearchitecttest2backend.Product.Product;
-import com.example.softwarearchitecttest2backend.Utils.NullGuard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,7 +49,7 @@ public class BOMService {
         if (databaseBillOfMaterial.isEmpty()) {
             return false;
         }
-        Long targetID = databaseBillOfMaterial.get().getBom_id();
+        Long targetID = databaseBillOfMaterial.get().getId();
         //Then delete it
         this.bomRepository.deleteById(targetID);
         return true;
