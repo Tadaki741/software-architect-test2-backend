@@ -1,6 +1,7 @@
 package com.example.softwarearchitecttest2backend.Product;
 
 
+import com.example.softwarearchitecttest2backend.ManufacturingOrder.ManufacturingOrder;
 import lombok.*;
 
 import javax.persistence.*;
@@ -37,6 +38,9 @@ public class Product {
 
     @Column(name = "parent")
     private String parent;
+
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    private ManufacturingOrder manufacturingOrder;
 
 
     //Custom constructor without id
