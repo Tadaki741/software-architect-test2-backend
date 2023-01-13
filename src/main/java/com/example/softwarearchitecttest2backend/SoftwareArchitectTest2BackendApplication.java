@@ -35,16 +35,16 @@ public class SoftwareArchitectTest2BackendApplication {
 		return args -> {
 
 			//Add some fake data to the product table
-			Product product1 = new Product("7812367213","chair","an object to sit down","furniture",5,"none");
-			Product product2 = new Product("9345834958","hair dryer","object to dry wet hair","electronic",3,"none");
-			Product product3 = new Product("2109381092","pen","use to draw","stationary",10,"none");
-			Product product4 = new Product("0129310283","table","multipurpose table","furniture",6,"none");
-			Product product5 = new Product("1029382102","frying pan","a tool to cook food","kitchen",2,"none");
-			Product product6 = new Product("9812783129","air fryer","god savior tool","kitchen",7,"none");
-			Product product7 = new Product("0129012922","cue tips","use to clean the ears","accessories",2,"none");
-			Product product8 = new Product("1109208290","table lamp","environmental illumination device","electronics",3,"none");
-			Product product9 = new Product("0912839292","wall clock","use to tell time","kitchen",7,"none");
-			Product product10 = new Product("1928828122","air fryer","god savior tool","kitchen",7,"none");
+			Product product1 = new Product("7812367213","chair","an object to sit down","furniture",5, 100);
+			Product product2 = new Product("9345834958","hair dryer","object to dry wet hair","electronic",3,50);
+			Product product3 = new Product("2109381092","pen","use to draw","stationary",10,5);
+			Product product4 = new Product("0129310283","table","multipurpose table","furniture",6,30);
+			Product product5 = new Product("1029382102","frying pan","a tool to cook food","kitchen",2,30);
+			Product product6 = new Product("9812783129","air fryer","god savior tool","kitchen",7,120);
+			Product product7 = new Product("0129012922","cue tips","use to clean the ears","accessories",2,10);
+			Product product8 = new Product("1109208290","table lamp","environmental illumination device","electronics",3,15);
+			Product product9 = new Product("0912839292","wall clock","use to tell time","kitchen",7,10);
+			Product product10 = new Product("1928828122","jacket","personal clothing","clothing",7,120);
 
 			//Repo
 			this.productRepository.save(product1);

@@ -23,6 +23,6 @@ public interface ProductRepository extends PagingAndSortingRepository<Product, L
     //Use for updating
     @Transactional
     @Modifying
-    @Query(value = "update Product p set p.code = :code, p.name = :name, p.description = :description, p.category = :category, p.quantity = :quantity, p.parent = :parent where p.id = :id")
-    void updateProduct(@Param(value = "id") long id, @Param(value = "code") String code, @Param(value = "name") String name, @Param(value = "description") String description, @Param(value = "category") String category, @Param(value = "quantity") int quantity, @Param(value = "parent") String parent);
+    @Query(value = "update Product p set p.code = :code, p.name = :name, p.description = :description, p.category = :category, p.quantity = :quantity, p.price = :price where p.id = :id")
+    void updateProduct(@Param(value = "id") long id, @Param(value = "code") String code, @Param(value = "name") String name, @Param(value = "description") String description, @Param(value = "category") String category, @Param(value = "quantity") int quantity, @Param(value = "price") int price);
 }

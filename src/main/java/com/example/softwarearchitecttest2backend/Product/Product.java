@@ -36,20 +36,20 @@ public class Product {
     private Integer quantity;
 
 
-    @Column(name = "parent")
-    private String parent;
+    @Column(name = "price")
+    private Integer price;
 
 //    @ManyToOne(cascade = CascadeType.ALL)
 //    private ManufacturingOrder manufacturingOrder;
 
 
     //Custom constructor without id
-    public Product(String code, String name, String description, String category, int quantity, String parent) {
+    public Product(String code, String name, String description, String category, int quantity, int price) {
         this.code = code;
         this.name = name;
         this.description = description;
         this.category = category;
         this.quantity = quantity;
-        this.parent = parent;
+        this.price = price;
     }
 }

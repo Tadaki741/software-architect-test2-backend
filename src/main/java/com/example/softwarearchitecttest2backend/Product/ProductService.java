@@ -80,9 +80,9 @@ public class ProductService {
         NullGuard.updateIfChanged(existedProduct::setDescription, productDTO.getDescription(), existedProduct::getDescription);
         NullGuard.updateIfChanged(existedProduct::setCategory, productDTO.getCategory(), existedProduct::getCategory);
         NullGuard.updateIfChanged(existedProduct::setQuantity, productDTO.getQuantity(), existedProduct::getQuantity);
-        NullGuard.updateIfChanged(existedProduct::setParent, productDTO.getParent(), existedProduct::getParent);
+        NullGuard.updateIfChanged(existedProduct::setPrice, productDTO.getPrice(), existedProduct::getPrice);
 
-        this.productRepository.updateProduct(Long.parseLong(id), existedProduct.getCode(), existedProduct.getName(), existedProduct.getDescription(), existedProduct.getCategory(), existedProduct.getQuantity(), existedProduct.getParent());
+        this.productRepository.updateProduct(Long.parseLong(id), existedProduct.getCode(), existedProduct.getName(), existedProduct.getDescription(), existedProduct.getCategory(), existedProduct.getQuantity(), existedProduct.getPrice());
         return true;
     }
 
